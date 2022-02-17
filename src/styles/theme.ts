@@ -1,29 +1,34 @@
 const colors = {
-  primary: '#191F28',
-  gray: '#8B95A1',
+  primary: '#555555',
+  gray: '#AAA9A9',
+  header: '#629AFF',
+  blue: '#3182F6',
+  hover: 'rgba(0, 23, 51, 0.05)',
+  background: '#FAFAFA',
+  boxShadow: '2px 2px 5px 0 rgba(0, 0, 0, 0.1)',
 };
 
 const borderRadius = {
   small: 4,
-  medium: 8,
-  large: 16,
-  xlarge: 20,
-  xxlarge: 24,
+  medium: 10,
 };
 
-const gap = {
-  smallVertical: 14,
-  smallHorizontal: 18,
-  baseVertical: 14,
-  baseHorizontal: 18,
-  largeVertical: 18,
-  largeHorizontal: 28,
+const gaps = {
+  base: 10,
+  lgVertical: 18,
+};
+
+const sizes = {
+  smHeader: 50,
+  lgHeader: 60,
+  lgItem: 70,
 };
 
 const theme = {
   colors,
   borderRadius,
-  gap,
+  gaps,
+  sizes,
 };
 
 export type Theme = typeof theme;

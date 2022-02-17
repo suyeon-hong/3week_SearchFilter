@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { font16 } from './fonts';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -11,6 +12,7 @@ ${reset}
 html, body {
 	background-color: #fff;
 	font-family: apple-system, 'Roboto', Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif; 
+	${font16(700)};
 }
 
 a {
