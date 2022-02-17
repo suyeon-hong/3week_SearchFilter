@@ -22,6 +22,10 @@ a {
 	text-decoration: none;
 }
 
+p {
+	word-break: break-all;
+}
+
 button {
 	background-color: white;
 	border: none;
