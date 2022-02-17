@@ -2,10 +2,16 @@ import { useState, useEffect, useCallback } from 'react';
 
 type PromiseFn<T> = (...args: any) => Promise<T>;
 
+type ResponseType<T> = {
+  isLoading: boolean;
+  data: T | never[];
+  isError: boolean;
+};
+
 const useAsync = <T>(callback: PromiseFn<T>, immediate = false) => {
-  const [response, setResponse] = useState({
+  const [response, setResponse] = useState<ResponseType<T>>({
     isLoading: false,
-    data: {},
+    data: [],
     isError: false,
   });
 
