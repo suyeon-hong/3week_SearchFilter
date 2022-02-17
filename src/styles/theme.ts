@@ -6,6 +6,7 @@ const colors = {
   hover: 'rgba(0, 23, 51, 0.05)',
   background: '#FAFAFA',
   boxShadow: '2px 2px 5px 0 rgba(0, 0, 0, 0.1)',
+  tag: '#EEEEEE',
 };
 
 const borderRadius = {
