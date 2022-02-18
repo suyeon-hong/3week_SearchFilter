@@ -1,14 +1,10 @@
 import React from 'react';
 import { Header, ItemBox, EmptyBox } from '@components/base';
 import * as S from './Style';
-
-export interface ItemData {
-  브랜드: string | null;
-  제품명: string;
-}
+import { Item } from '@types';
 
 interface MainBoxProps {
-  items?: ItemData[];
+  items?: Item[];
 }
 
 const MainBox = ({ items }: MainBoxProps) => {

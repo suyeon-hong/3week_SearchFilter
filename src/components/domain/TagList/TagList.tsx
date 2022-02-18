@@ -4,7 +4,7 @@ import { Tag } from '@components/base';
 import { Item } from '@types';
 
 interface TagListProps {
-  supplementInfo: Item[];
+  supplementInfo?: Item[];
   setCheckedBrand: Dispatch<SetStateAction<string>>;
 }
 
