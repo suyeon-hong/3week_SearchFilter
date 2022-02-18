@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 import { font10 } from '@styles/fonts';
 
-interface liProps {
-  isChecked: boolean;
-}
-
-export const Tag = styled.li<liProps>`
+export const TagWrapper = styled.div`
   flex: 0 0 auto;
+
+  >input: checked + label {
+    color: #fff;
+    background: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
+export const HiddenInput = styled.input`
+  display: none;
+`;
+
+export const Tag = styled.label`
+  display: block;
   ${font10(700)};
   color: ${({ theme }) => theme.colors.primary};
   background: ${({ theme }) => theme.colors.tag};
@@ -20,11 +29,4 @@ export const Tag = styled.li<liProps>`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  ${({ isChecked, theme }) =>
-    isChecked &&
-    `
-			color: #fff;
-			background: ${theme.colors.blue};
-		`}
 `;

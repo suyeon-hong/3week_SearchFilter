@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import * as S from './Style';
 import { Tag } from '@components/base';
 import { Item } from '@types';
 
 interface TagListProps {
-  data: [Item];
+  supplementInfo: Item[];
+  setCheckedBrand: Dispatch<SetStateAction<string>>;
 }
 
-const TagList = ({ data }: TagListProps) => {
-  console.log(data);
+const TagList = ({ supplementInfo, setCheckedBrand }: TagListProps) => {
   const tagList: string[] = [];
 
-  data.forEach((item) => {
-    const brand = item.브랜드;
+  if (supplementInfo) {
+    supplementInfo.forEach((item: Item) => {
+      const brand = item.브랜드;
 
-    if (brand && tagList.indexOf(brand) < 0) {
-      tagList.push(brand);
-    }
-  });
+      if (brand && tagList.indexOf(brand) < 0) {
+        tagList.push(brand);
+      }
+    });
+  }
 
   return (
     <S.TagList>
-      {tagList &&
-        React.Children.toArray(tagList.map((item) => <Tag item={item} />))}
+      {tagList.length > 0 &&
+        React.Children.toArray(
+          tagList.map((item) => (
+            <Tag item={item} setCheckedBrand={setCheckedBrand} />
+          ))
+        )}
     </S.TagList>
   );
 };
