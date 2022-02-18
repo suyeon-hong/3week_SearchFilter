@@ -4,7 +4,7 @@ type PromiseFn<T> = (...args: any) => Promise<T>;
 
 type ResponseType<T> = {
   isLoading: boolean;
-  data: T | never[];
+  data: Awaited<T> | never[];
   isError: boolean;
 };
 

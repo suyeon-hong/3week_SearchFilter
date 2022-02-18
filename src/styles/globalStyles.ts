@@ -22,13 +22,17 @@ a {
 	text-decoration: none;
 }
 
+p {
+	word-break: break-all;
+}
+
 button {
 	background-color: white;
 	border: none;
 	cursor: pointer;
 }
 
-ol, ui, li {
+ol, ul, li {
 	list-style: none;
 }
 
