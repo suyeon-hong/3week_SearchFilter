@@ -1,11 +1,17 @@
-import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react';
 import { PaginationBox } from '@components/base';
 import * as S from './Style';
 
 interface PaginationProps {
   totalPages: number;
+  totalGroupPages: number;
   groupPages: number;
-  postPerPage: number;
   currentIndex: number;
   setCurrentIndex: Dispatch<SetStateAction<number>>;
   setGroupPages: Dispatch<SetStateAction<number>>;
@@ -15,6 +21,7 @@ export type Direction = 'next' | 'prev';
 
 const Pagination = ({
   totalPages,
+  totalGroupPages,
   groupPages,
   currentIndex,
   setCurrentIndex,
@@ -25,8 +32,32 @@ const Pagination = ({
   // @NOTE: currentPage가 totalPost를 넘으면 groupPages부터 postPerPage까지 더해서 보여준다.
   const MAX_PAGES_PER_GROUP = 10;
 
-  const firstIndex = (groupPages - 1) * MAX_PAGES_PER_GROUP + 1;
-  const lastIndex = firstIndex + MAX_PAGES_PER_GROUP - 1;
+  // Math.floor(totalPosts / perPage) = 93
+  // 37 / 6 = 6
+  // 만약 groupPages * 10 > totalGroupPages 라면 groupPages ~ groupPages + perPage 까지만 반복문
+  // 만약 groupPages * 10 < totalGroupPages 라면 10개씩 끊어서 보여줌
+
+  const firstIndex =
+    groupPages === 1 ? groupPages : (groupPages - 1) * MAX_PAGES_PER_GROUP + 1;
+
+  const checkOver10GroupPages = () => {
+    const lastIndexByGroupPages =
+      firstIndex === 1 ? 1 * MAX_PAGES_PER_GROUP : firstIndex;
+    if (lastIndexByGroupPages <= MAX_PAGES_PER_GROUP) {
+      return lastIndexByGroupPages > totalGroupPages;
+    } else {
+      return lastIndexByGroupPages + MAX_PAGES_PER_GROUP > totalGroupPages;
+    }
+  };
+
+  const isOver10 = useMemo(
+    () => checkOver10GroupPages(),
+    [firstIndex, totalGroupPages]
+  );
+
+  const lastIndex = isOver10
+    ? totalGroupPages
+    : firstIndex + MAX_PAGES_PER_GROUP - 1;
   const [indexListPerGroup, setIndexListPerGroup] = useState<number[]>([]);
 
   useEffect(() => {
@@ -44,10 +75,10 @@ const Pagination = ({
     setGroupPages((prevGroup) =>
       direction === 'next' ? prevGroup + 1 : prevGroup - 1
     );
-    setCurrentIndex((prevIndex) =>
+    setCurrentIndex(
       direction === 'next'
-        ? prevIndex + MAX_PAGES_PER_GROUP
-        : prevIndex - MAX_PAGES_PER_GROUP
+        ? firstIndex + MAX_PAGES_PER_GROUP
+        : firstIndex - MAX_PAGES_PER_GROUP
     );
   };
 
@@ -57,9 +88,10 @@ const Pagination = ({
     // Math.ceil(totalPages / MAX_PAGES_PER_GROUP), groupPages
     switch (direction) {
       case 'next': {
-        const lastGroupPages = Math.ceil(totalPages / MAX_PAGES_PER_GROUP);
-        setGroupPages(lastGroupPages);
-        setCurrentIndex((lastGroupPages - 1) * MAX_PAGES_PER_GROUP + 1);
+        const currentGroupPages = Math.floor(totalGroupPages / 10);
+
+        setGroupPages(currentGroupPages + 1);
+        setCurrentIndex(currentGroupPages * 10 + 1);
         break;
       }
       case 'prev':
@@ -77,40 +109,49 @@ const Pagination = ({
 
   return (
     <S.PaginationWrapper>
-      <PaginationBox
-        mode="double"
-        direction="prev"
-        checkEndIndex={firstIndex <= 1}
-        onClick={() => handleDoubleBtn('prev')}
-      />
-      <PaginationBox
-        mode="single"
-        direction="prev"
-        checkEndIndex={firstIndex <= 1}
-        onClick={() => handleSingleBtn('prev')}
-      />
-      {React.Children.toArray(
-        indexListPerGroup.map((pageIndex) => (
+      <S.PaginationInner>
+        <S.MoveBtnvWrapper>
           <PaginationBox
-            mode="none"
-            content={pageIndex}
-            aria-current={currentIndex === pageIndex ? 'page' : null}
-            onClick={() => handleIndexBtn(pageIndex)}
+            mode="double"
+            direction="prev"
+            checkEndIndex={groupPages <= 1}
+            onClick={() => handleDoubleBtn('prev')}
           />
-        ))
-      )}
-      <PaginationBox
-        mode="single"
-        direction="next"
-        onClick={() => handleSingleBtn('next')}
-        checkEndIndex={lastIndex >= totalPages}
-      />
-      <PaginationBox
-        mode="double"
-        direction="next"
-        onClick={() => handleDoubleBtn('next')}
-        checkEndIndex={lastIndex >= totalPages}
-      />
+          <PaginationBox
+            mode="single"
+            direction="prev"
+            checkEndIndex={groupPages <= 1}
+            onClick={() => handleSingleBtn('prev')}
+          />
+        </S.MoveBtnvWrapper>
+        <S.Pagination>
+          {React.Children.toArray(
+            indexListPerGroup.map((pageIndex) => (
+              <PaginationBox
+                mode="none"
+                content={pageIndex}
+                isActive={currentIndex === pageIndex}
+                aria-current={currentIndex === pageIndex ? 'page' : null}
+                onClick={() => handleIndexBtn(pageIndex)}
+              />
+            ))
+          )}
+        </S.Pagination>
+        <S.MoveBtnvWrapper>
+          <PaginationBox
+            mode="single"
+            direction="next"
+            onClick={() => handleSingleBtn('next')}
+            checkEndIndex={isOver10}
+          />
+          <PaginationBox
+            mode="double"
+            direction="next"
+            onClick={() => handleDoubleBtn('next')}
+            checkEndIndex={isOver10}
+          />
+        </S.MoveBtnvWrapper>
+      </S.PaginationInner>
     </S.PaginationWrapper>
   );
 };
