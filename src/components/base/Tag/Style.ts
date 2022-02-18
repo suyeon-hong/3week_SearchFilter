@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { font10 } from '@styles/fonts';
+import { removeTextPointer } from '@styles/commonStyles';
 
 export const TagWrapper = styled.div`
   flex: 0 0 auto;
@@ -23,10 +24,5 @@ export const Tag = styled.label`
   border-radius: ${({ theme }) => `${theme.borderRadius.medium}px`};
   padding: ${({ theme }) => `${theme.gaps.base}px`};
   cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  ${removeTextPointer}
 `;
