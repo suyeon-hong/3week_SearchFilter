@@ -1,5 +1,5 @@
 import { flexbox } from '@styles/commonStyles';
-import { font18 } from '@styles/fonts';
+import { font14, font18 } from '@styles/fonts';
 import styled from 'styled-components';
 import { removeTextPointer } from '@styles/commonStyles';
 
@@ -9,6 +9,10 @@ export const Form = styled.form`
   margin: 0 auto;
   position: relative;
   ${removeTextPointer};
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 50px;
+  }
 `;
 
 export const UserInput = styled.input`
@@ -19,7 +23,7 @@ export const UserInput = styled.input`
   ${font18(400)};
   border-radius: ${({ theme }) => `${theme.borderRadius.small}px`};
   padding-left: ${({ theme }) => `${theme.gaps.base * 2}px`};
-  padding-right: ${({ theme }) => `${theme.gaps.base * 6}px`};
+  padding-right: ${({ theme }) => `${theme.gaps.base * 7}px`};
 
   &:focus {
     outline: none;
@@ -27,6 +31,12 @@ export const UserInput = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray};
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    ${font14(400)};
+    padding-left: ${({ theme }) => `${theme.gaps.base}px`};
+    padding-right: ${({ theme }) => `${theme.gaps.base * 5}px`};
   }
 `;
 
@@ -42,4 +52,10 @@ export const SearchBtn = styled.button`
   transform: translateY(-50%);
   font-size: 24px;
   color: #fff;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 40px;
+    height: 40px;
+    right: ${({ theme }) => `${theme.gaps.base / 2}px`};
+  }
 `;
