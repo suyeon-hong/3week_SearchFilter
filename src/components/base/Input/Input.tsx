@@ -6,7 +6,9 @@ import {
   useState,
   Dispatch,
   SetStateAction,
+  useCallback,
 } from 'react';
+import { debounce } from 'lodash';
 
 interface InputProps {
   setUserInput: Dispatch<SetStateAction<string>>;
@@ -16,15 +18,21 @@ const Input = ({ setUserInput }: InputProps) => {
   const [currentInput, setCurrentInput] = useState<string>('');
 
   const getUserInput = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    if (currentInput === '') return;
+    if (currentInput.trim() === '') return;
     setUserInput(currentInput);
     setCurrentInput('');
   };
 
+  const debouncedSearch = useCallback(
+    debounce((value: string) => setUserInput(value), 300),
+    [setUserInput]
+  );
+
   const handelChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCurrentInput(e.target.value);
+    debouncedSearch(e.target.value);
   };
 
   return (

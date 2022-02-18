@@ -5,3 +5,13 @@ export const matchName = (name: string, keyword: string): boolean => {
   if (keyword === '') return false;
   return name === keyword.toString().toLowerCase();
 };
+
+export const matchBrand = (
+  brand: string | null | undefined,
+  keyword: string
+): boolean => {
+  const keyLen = keyword.length;
+  brand = brand?.toLowerCase().substring(0, keyLen);
+  if (brand === '') return false;
+  return brand === keyword.toString().toLowerCase();
+};
