@@ -10,6 +10,10 @@ export const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.header};
   border-radius: ${({ theme }) => `${theme.borderRadius.medium}px`};
   margin-bottom: ${({ theme }) => `${theme.gaps.lgVertical}px`};
+
+  @media ${({ theme }) => theme.device.mobile} {
+    display: none;
+  }
 `;
 
 export const Brand = styled.p`

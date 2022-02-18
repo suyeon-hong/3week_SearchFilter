@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, ItemBox } from '@components/base';
+import { Header, ItemBox, EmptyBox } from '@components/base';
 import * as S from './Style';
 
 export interface ItemData {
@@ -8,18 +8,21 @@ export interface ItemData {
 }
 
 interface MainBoxProps {
-  items: ItemData[];
+  items?: ItemData[];
 }
 
 const MainBox = ({ items }: MainBoxProps) => {
-  console.log(items, 111);
   return (
     <S.MainBoxWrapper>
       <Header />
-      {React.Children.toArray(
-        items.map((item) => (
-          <ItemBox brandName={item.브랜드} itemName={item.제품명} />
-        ))
+      {items ? (
+        React.Children.toArray(
+          items.map((item) => (
+            <ItemBox brandName={item.브랜드} itemName={item.제품명} />
+          ))
+        )
+      ) : (
+        <EmptyBox />
       )}
     </S.MainBoxWrapper>
   );

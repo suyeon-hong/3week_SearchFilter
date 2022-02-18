@@ -9,11 +9,11 @@ interface ItemBoxProps {
 const ItemBox = ({ brandName, itemName }: ItemBoxProps) => {
   return (
     <>
-      <S.Header>
+      <S.ItemBox>
         {brandName ? <S.Brand>{brandName}</S.Brand> : <S.Emoji>🌧</S.Emoji>}
         <S.Line></S.Line>
         <S.Item>{itemName}</S.Item>
-      </S.Header>
+      </S.ItemBox>
     </>
   );
 };
