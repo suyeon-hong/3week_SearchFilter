@@ -8,11 +8,17 @@ const colors = {
   active: 'rgba(0, 23, 51, 0.20)',
   background: '#f2f2f2',
   boxShadow: '2px 2px 5px 0 rgba(0, 0, 0, 0.1)',
+  tag: '#EEEEEE',
 };
 
 const borderRadius = {
   small: 4,
   medium: 10,
+};
+
+const device = {
+  mobile: `(max-width: 768px)`,
+  desktop: `(max-width: 1440px)`,
 };
 
 const gaps = {
@@ -31,6 +37,7 @@ const theme = {
   borderRadius,
   gaps,
   sizes,
+  device,
 };
 
 export type Theme = typeof theme;
