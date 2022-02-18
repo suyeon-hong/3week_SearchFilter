@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header, ItemBox, EmptyBox } from '@components/base';
 import * as S from './Style';
-import { Item } from '@types';
+import { IMockData } from '@types';
 
 interface MainBoxProps {
-  items?: Item[];
+  items?: IMockData[];
 }
 
 const MainBox = ({ items }: MainBoxProps) => {

@@ -1,12 +1,15 @@
 import { useAsync } from '@hooks';
 import { getMockData } from '@apis';
+import { Main } from '@pages';
 
 function App() {
   const { response } = useAsync(getMockData, true);
 
-  console.log(response.data);
-
-  return <></>;
+  return (
+    <>
+      <Main data={response.data} />
+    </>
+  );
 }
 
 export default App;

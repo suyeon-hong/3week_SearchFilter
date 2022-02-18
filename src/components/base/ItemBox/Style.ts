@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexbox, ellipsis } from '@styles/commonStyles';
+import { flexbox, ellipsis, removeTextPointer } from '@styles/commonStyles';
 import { font12, font14, font16, font18 } from '@styles/fonts';
 
 export const ItemBox = styled.div`
@@ -8,6 +8,9 @@ export const ItemBox = styled.div`
   height: 70px;
   background-color: white;
   border-radius: ${({ theme }) => `${theme.borderRadius.medium}px`};
+  cursor: pointer;
+  ${removeTextPointer};
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }

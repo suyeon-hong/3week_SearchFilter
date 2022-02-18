@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexbox } from '@styles/commonStyles';
+import { flexbox, removeTextPointer } from '@styles/commonStyles';
 
 export const PaginationWrapper = styled.div``;
 
@@ -7,6 +7,7 @@ export const Pagination = styled.nav`
   button:not(:first-of-type) {
     margin-left: 5px;
   }
+  ${removeTextPointer};
 `;
 
 export const PaginationInner = styled.div`

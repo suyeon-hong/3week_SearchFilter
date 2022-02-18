@@ -1,1 +1,1 @@
-// export { default as Temp } from './Temp';
+export { default as Main } from './Main/Main';
