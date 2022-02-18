@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexbox } from '@styles/commonStyles';
+import { flexbox, removeTextPointer } from '@styles/commonStyles';
 import { font18 } from '@styles/fonts';
 
 export const Header = styled.header`
@@ -10,6 +10,7 @@ export const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.header};
   border-radius: ${({ theme }) => `${theme.borderRadius.medium}px`};
   margin-bottom: ${({ theme }) => `${theme.gaps.lgVertical}px`};
+  ${removeTextPointer};
 
   @media ${({ theme }) => theme.device.mobile} {
     display: none;

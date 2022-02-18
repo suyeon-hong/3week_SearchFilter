@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import { removeTextPointer } from '@styles/commonStyles';
 
 export const Form = styled.form`
+  ${removeTextPointer};
+`;
+
+export const InputWrapper = styled.div`
+  margin: 0 auto;
   max-width: 477px;
   height: 60px;
-  margin: 0 auto;
   position: relative;
-  ${removeTextPointer};
 
   @media ${({ theme }) => theme.device.mobile} {
     height: 50px;
