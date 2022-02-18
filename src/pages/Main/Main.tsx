@@ -1,7 +1,7 @@
 import { Input } from '@components/base';
 import { PaginationWrapper, TagList, MainBox } from '@components/domain';
 import { IMockData } from '@types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './Style';
 
 interface MainProps {
