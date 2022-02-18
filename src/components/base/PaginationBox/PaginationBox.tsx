@@ -6,6 +6,7 @@ export interface PaginationBoxProps {
   mode: 'single' | 'double' | 'none';
   direction?: Direction;
   content?: number;
+  isActive?: boolean;
   checkEndIndex?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -14,6 +15,7 @@ const PaginationBox = ({
   mode = 'none',
   direction,
   content,
+  isActive,
   checkEndIndex,
   onClick,
 }: PaginationBoxProps) => {
@@ -23,7 +25,7 @@ const PaginationBox = ({
     case 'none':
       if (content && mode === 'none') {
         BoxComponent = (
-          <S.Box mode="none" onClick={onClick}>
+          <S.Box mode="none" onClick={onClick} isActive={isActive}>
             {content}
           </S.Box>
         );
@@ -31,16 +33,24 @@ const PaginationBox = ({
       break;
     case 'single':
       BoxComponent = (
-        <S.Box mode="single" onClick={onClick} disabled={checkEndIndex}>
-          <BsFillTriangleFill className={direction} />
+        <S.Box
+          mode="single"
+          className={direction}
+          onClick={onClick}
+          disabled={checkEndIndex}>
+          <BsFillTriangleFill />
         </S.Box>
       );
       break;
     case 'double':
       BoxComponent = (
-        <S.Box mode="double" onClick={onClick} disabled={checkEndIndex}>
-          <BsFillTriangleFill className={direction} />
-          <BsFillTriangleFill className={direction} />
+        <S.Box
+          mode="double"
+          className={direction}
+          onClick={onClick}
+          disabled={checkEndIndex}>
+          <BsFillTriangleFill />
+          <BsFillTriangleFill />
         </S.Box>
       );
       break;

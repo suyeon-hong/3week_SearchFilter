@@ -4,14 +4,15 @@ import { PaginationBoxProps } from './PaginationBox';
 
 interface BoxProps {
   mode: PaginationBoxProps['mode'];
-  direction?: PaginationBoxProps['direction'];
+  isActive?: boolean;
 }
 
 export const Box = styled.button<BoxProps>`
   position: relative;
   ${flexbox({ flex: 'inline-flex' })};
   flex-shrink: 0;
-  background-color: white;
+  background-color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.focus : 'white'};
   width: 35px;
   height: 35px;
   text-align: center;
@@ -19,7 +20,8 @@ export const Box = styled.button<BoxProps>`
 
   [aria-current='page'] {
     // FIXME: 스타일 안먹음
-    background-color: ${({ theme }) => theme.colors.focus};
+    background-color: ${({ theme, isActive }) =>
+      isActive && theme.colors.focus};
     font-weight: bold;
   }
 
@@ -31,6 +33,18 @@ export const Box = styled.button<BoxProps>`
     background-color: ${({ theme }) => theme.colors.hover};
   }
 
+  &.next {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.prev {
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+
   svg {
     position: ${({ mode }) => mode === 'double' && 'absolute'};
     &:first-of-type {
@@ -38,14 +52,6 @@ export const Box = styled.button<BoxProps>`
     }
     &:nth-of-type(2) {
       left: 6px;
-    }
-
-    &.next {
-      transform: rotate(90deg);
-    }
-
-    &.prev {
-      transform: rotate(-90deg);
     }
   }
 `;
