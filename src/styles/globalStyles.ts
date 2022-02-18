@@ -1,17 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import { font16 } from './fonts';
+import theme from './theme';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
 * {
 	box-sizing: border-box;
 	margin: 0;
+	font-family: 'Noto Sans KR', Dotum, '돋움', Helvetica, sans-serif; 
 }
 
 html, body {
-	background-color: #fff;
-	font-family: apple-system, 'Roboto', Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif; 
+	background-color: ${theme.colors.background};
+	font-family: 'Noto Sans KR', Dotum, '돋움', Helvetica, sans-serif; 
 	${font16(700)};
 }
 
@@ -21,6 +23,8 @@ a {
 }
 
 button {
+	background-color: white;
+	border: none;
 	cursor: pointer;
 }
 
