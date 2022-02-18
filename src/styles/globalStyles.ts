@@ -32,7 +32,7 @@ button {
 	cursor: pointer;
 }
 
-ol, ui, li {
+ol, ul, li {
 	list-style: none;
 }
 
