@@ -14,6 +14,11 @@ const borderRadius = {
   medium: 10,
 };
 
+const device = {
+  mobile: `(max-width: 768px)`,
+  desktop: `(max-width: 1440px)`,
+};
+
 const gaps = {
   base: 10,
   lgVertical: 18,
@@ -30,6 +35,7 @@ const theme = {
   borderRadius,
   gaps,
   sizes,
+  device,
 };
 
 export type Theme = typeof theme;
