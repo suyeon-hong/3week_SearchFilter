@@ -1,5 +1,9 @@
-import { EmptyBox, Input, ItemBrandBtn } from '@components/base';
-import { PaginationWrapper, TagList, MainBox } from '@components/domain';
+import {
+  PaginationWrapper,
+  TagList,
+  MainBox,
+  Header,
+} from '@components/domain';
 import { resultFilter } from '@utils/functions';
 import { IMockData } from '@types';
 import { useEffect, useState } from 'react';
@@ -62,13 +66,15 @@ const Main = ({ data }: MainProps) => {
 
   return (
     <S.PageWrapper>
-      <S.InputWrapper>
-        <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
-        <Input setUserInput={setUserInput} initFilteredList={initFilteredList}/>
-        <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
-      </S.InputWrapper>
-          <MainBox items={filteredList} />
-          <PaginationWrapper list={filteredList} />
+      <Header
+        userSelect={userSelect}
+        setUserInput={setUserInput}
+        setUserSelect={setUserSelect}
+        initFilteredList={initFilteredList}
+      />
+      <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
+      <MainBox items={filteredList} />
+      <PaginationWrapper list={filteredList} />
     </S.PageWrapper>
   );
 };
