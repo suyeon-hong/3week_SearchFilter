@@ -26,6 +26,11 @@ const Main = ({ data }: MainProps) => {
   }, [userInput]);
 
   useEffect(() => {
+    if (!checkedBrand) {
+      setFilteredList(data);
+      return;
+    }
+
     if (temporaryBrand !== '') {
       const results: IMockData[] = resultFilter(
         temporaryList,
@@ -52,15 +57,8 @@ const Main = ({ data }: MainProps) => {
     <S.PageWrapper>
       <Input setUserInput={setUserInput} />
       <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
-
-      {filteredList.length > 0 ? (
-        <>
-          <MainBox items={filteredList} />
-          <PaginationWrapper list={filteredList} />
-        </>
-      ) : (
-        <EmptyBox />
-      )}
+      <MainBox items={filteredList} />
+      <PaginationWrapper list={filteredList} />
     </S.PageWrapper>
   );
 };
