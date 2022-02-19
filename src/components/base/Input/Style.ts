@@ -5,10 +5,15 @@ import { removeTextPointer } from '@styles/commonStyles';
 
 export const InputContainer = styled.div`
   ${removeTextPointer};
+  ${flexbox};
+  gap: ${({ theme }) => `${theme.gaps.base * 3}px`};
+
+  @media ${({ theme }) => theme.device.mobile} {
+    gap: ${({ theme }) => `${theme.gaps.base * 2}px`};
+  }
 `;
 
 export const inputInner = styled.div`
-  margin: 0 auto;
   max-width: 477px;
   height: 60px;
   position: relative;
@@ -19,6 +24,7 @@ export const inputInner = styled.div`
 `;
 
 export const UserInput = styled.input`
+  flex: 1 0 auto;
   width: 100%;
   height: 100%;
   border: none;
@@ -60,5 +66,17 @@ export const SearchBtn = styled.button`
     width: 40px;
     height: 40px;
     right: ${({ theme }) => `${theme.gaps.base / 2}px`};
+  }
+`;
+
+export const ResetBtn = styled(SearchBtn)`
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: translateY(0);
+  background: #fff;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
   }
 `;

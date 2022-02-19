@@ -16,8 +16,12 @@ const Main = ({ data }: MainProps) => {
   const [filteredList, setFilteredList] = useState<IMockData[]>([]);
   const [temporaryList, setTemporaryList] = useState<IMockData[]>([]);
 
-  useEffect(() => {
+  const initFilteredList = () => {
     setFilteredList(data);
+  };
+
+  useEffect(() => {
+    initFilteredList();
   }, [data]);
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const Main = ({ data }: MainProps) => {
 
   return (
     <S.PageWrapper>
-      <Input setUserInput={setUserInput} />
+      <Input setUserInput={setUserInput} initFilteredList={initFilteredList} />
       <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
 
       {filteredList.length > 0 ? (
