@@ -18,7 +18,7 @@ const Input = ({ setUserInput }: InputProps) => {
   const [currentInput, setCurrentInput] = useState<string>('');
 
   const getUserInput = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (currentInput.trim() === '') return;
     setUserInput(currentInput);
