@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { removeTextPointer } from '@styles/commonStyles';
 
 export const InputContainer = styled.div`
+  flex: 0.2 0 auto;
   ${removeTextPointer};
   ${flexbox};
   gap: ${({ theme }) => `${theme.gaps.base * 3}px`};
@@ -66,17 +67,5 @@ export const SearchBtn = styled.button`
     width: 40px;
     height: 40px;
     right: ${({ theme }) => `${theme.gaps.base / 2}px`};
-  }
-`;
-
-export const ResetBtn = styled(SearchBtn)`
-  position: relative;
-  top: auto;
-  right: auto;
-  transform: translateY(0);
-  background: #fff;
-
-  path {
-    stroke: ${({ theme }) => theme.colors.blue};
   }
 `;

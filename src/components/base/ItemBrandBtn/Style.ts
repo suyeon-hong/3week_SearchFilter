@@ -1,22 +1,26 @@
 import styled from 'styled-components';
-import { font16, font18 } from '@styles/fonts';
+import { font16 } from '@styles/fonts';
+import { removeTextPointer } from '@styles/commonStyles';
 
 export const ButtonWrapper = styled.div`
   text-align: center;
+  ${removeTextPointer}
+
+  input {
+    display: none;
+  }
 `;
 
 export const ItemLabel = styled.label<{ userSelect: boolean }>`
   background-color: ${({ userSelect }) => (userSelect ? '#629AFF' : 'white')};
   color: ${({ userSelect }) => (userSelect ? 'white' : 'black')};
-  padding: 12px 10px;
+  padding: ${({ theme }) => ` ${theme.gaps.base}px`};
   border-radius: 4px;
-  ${font18(700)};
+  ${font16(500)};
+  cursor: pointer;
+  margin-right: ${({ theme }) => `${theme.gaps.base}px`};
 
-  @media (max-width: 1040px) {
-    padding: 7px 3px;
-    ${font16(500)};
-  }
-  @media (max-width: 836px) {
+  @media ${({ theme }) => theme.device.mobile} {
     display: none;
   }
 `;
@@ -24,15 +28,12 @@ export const ItemLabel = styled.label<{ userSelect: boolean }>`
 export const BrandLabel = styled.label<{ userSelect: boolean }>`
   background-color: ${({ userSelect }) => (userSelect ? 'white' : '#629AFF')};
   color: ${({ userSelect }) => (userSelect ? 'black' : 'white')};
-  padding: 12px 10px;
+  padding: ${({ theme }) => ` ${theme.gaps.base}px`};
   border-radius: 4px;
-  ${font18(700)};
+  ${font16(500)};
+  cursor: pointer;
 
-  @media (max-width: 1040px) {
-    padding: 7px 3px;
-    ${font16(500)};
-  }
-  @media (max-width: 836px) {
+  @media ${({ theme }) => theme.device.mobile} {
     display: none;
   }
 `;
