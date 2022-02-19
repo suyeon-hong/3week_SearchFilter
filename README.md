@@ -112,23 +112,21 @@ $ yarn start
 ├── config-overrides.js
 ├── package.json
 ├── public
+│   ├── mock
 │   ├── index.html
 │   └── robots.txt
-├── server
-│   ├── db.json
-│   └── index.js
 ├── src
-│   ├── App.tsx
+│   ├── apis
 │   ├── assets
 │   ├── components
 │   ├── hooks
-│   ├── index.tsx
-│   ├── models
 │   ├── pages
-│   ├── react-app-env.d.ts
-│   ├── setupTests.ts
 │   ├── styles
+│   ├── types
 │   └── utils
+├── APP.tsx
+├── index.tsx
+├── setupTest.ts
 ├── tsconfig.json
 ├── tsconfig.paths.json
 └── yarn.lock
