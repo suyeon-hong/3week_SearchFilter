@@ -19,7 +19,12 @@ const Header = ({
 
   return (
     <S.Header>
-      <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
+      <ItemBrandBtn
+        userSelect={userSelect}
+        setUserSelect={setUserSelect}
+        setCurrentInput={setCurrentInput}
+        initFilteredList={initFilteredList}
+      />
       <Input
         setUserInput={setUserInput}
         currentInput={currentInput}

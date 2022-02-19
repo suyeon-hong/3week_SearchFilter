@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { font16 } from '@styles/fonts';
+import { removeTextPointer } from '@styles/commonStyles';
 
 export const ButtonWrapper = styled.div`
   text-align: center;
+  ${removeTextPointer}
 
   input {
     display: none;
