@@ -1,7 +1,7 @@
 import * as S from './Style';
 import { RiSearchLine } from 'react-icons/ri';
+import { GrPowerReset } from 'react-icons/gr';
 import {
-  FormEvent,
   ChangeEvent,
   useState,
   Dispatch,
@@ -12,18 +12,11 @@ import { debounce } from 'lodash';
 
 interface InputProps {
   setUserInput: Dispatch<SetStateAction<string>>;
+  initFilteredList: () => void;
 }
 
-const Input = ({ setUserInput }: InputProps) => {
+const Input = ({ setUserInput, initFilteredList }: InputProps) => {
   const [currentInput, setCurrentInput] = useState<string>('');
-
-  const getUserInput = (e: FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-
-    if (currentInput.trim() === '') return;
-    setUserInput(currentInput);
-    setCurrentInput('');
-  };
 
   const debouncedSearch = useCallback(
     debounce((value: string) => setUserInput(value), 300),
@@ -35,19 +28,31 @@ const Input = ({ setUserInput }: InputProps) => {
     debouncedSearch(e.target.value);
   };
 
+  const initInput = () => {
+    setCurrentInput('');
+  };
+
+  const reset = () => {
+    initInput();
+    initFilteredList();
+  };
+
   return (
-    <S.Form onSubmit={getUserInput}>
-      <S.InputWrapper>
+    <S.InputContainer>
+      <S.inputInner>
         <S.UserInput
           value={currentInput}
-          placeholder="제품명, 브랜드명 검색"
+          placeholder="제품명 검색"
           onChange={handelChange}
         />
-        <S.SearchBtn type="submit">
+        <S.SearchBtn type="submit" onClick={initInput}>
           <RiSearchLine />
         </S.SearchBtn>
-      </S.InputWrapper>
-    </S.Form>
+      </S.inputInner>
+      <S.ResetBtn onClick={reset}>
+        <GrPowerReset />
+      </S.ResetBtn>
+    </S.InputContainer>
   );
 };
 

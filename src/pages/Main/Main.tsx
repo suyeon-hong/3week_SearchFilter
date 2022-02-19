@@ -1,4 +1,4 @@
-import { EmptyBox, Input } from '@components/base';
+import { EmptyBox, Input, ItemBrandBtn } from '@components/base';
 import { PaginationWrapper, TagList, MainBox } from '@components/domain';
 import { resultFilter } from '@utils/functions';
 import { IMockData } from '@types';
@@ -11,17 +11,24 @@ interface MainProps {
 
 const Main = ({ data }: MainProps) => {
   const [userInput, setUserInput] = useState('');
+  const [userSelect, setUserSelect] = useState<boolean>(true);
   const [checkedBrand, setCheckedBrand] = useState('');
   const [temporaryBrand, setTemporaryBrand] = useState('');
   const [filteredList, setFilteredList] = useState<IMockData[]>([]);
   const [temporaryList, setTemporaryList] = useState<IMockData[]>([]);
 
-  useEffect(() => {
+  const initFilteredList = () => {
     setFilteredList(data);
+  };
+
+  useEffect(() => {
+    initFilteredList();
   }, [data]);
 
   useEffect(() => {
-    const results: IMockData[] = resultFilter(data, '제품명', userInput);
+    const results: IMockData[] = userSelect
+      ? resultFilter(data, '제품명', userInput)
+      : resultFilter(data, '브랜드', userInput);
     results && setFilteredList(results);
   }, [userInput]);
 
@@ -55,10 +62,13 @@ const Main = ({ data }: MainProps) => {
 
   return (
     <S.PageWrapper>
-      <Input setUserInput={setUserInput} />
-      <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
-      <MainBox items={filteredList} />
-      <PaginationWrapper list={filteredList} />
+      <S.InputWrapper>
+        <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
+        <Input setUserInput={setUserInput} initFilteredList={initFilteredList}/>
+        <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
+      </S.InputWrapper>
+          <MainBox items={filteredList} />
+          <PaginationWrapper list={filteredList} />
     </S.PageWrapper>
   );
 };

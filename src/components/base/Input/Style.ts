@@ -3,12 +3,18 @@ import { font14, font18 } from '@styles/fonts';
 import styled from 'styled-components';
 import { removeTextPointer } from '@styles/commonStyles';
 
-export const Form = styled.form`
+export const InputContainer = styled.div`
   ${removeTextPointer};
+  ${flexbox};
+  gap: ${({ theme }) => `${theme.gaps.base * 3}px`};
+
+  @media ${({ theme }) => theme.device.mobile} {
+    gap: ${({ theme }) => `${theme.gaps.base * 2}px`};
+  }
 `;
 
-export const InputWrapper = styled.div`
-  margin: 0 auto;
+export const inputInner = styled.div`
+  flex: 1 0 auto;
   max-width: 477px;
   height: 60px;
   position: relative;
@@ -60,5 +66,17 @@ export const SearchBtn = styled.button`
     width: 40px;
     height: 40px;
     right: ${({ theme }) => `${theme.gaps.base / 2}px`};
+  }
+`;
+
+export const ResetBtn = styled(SearchBtn)`
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: translateY(0);
+  background: #fff;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
