@@ -14,6 +14,7 @@ export const InputContainer = styled.div`
 `;
 
 export const inputInner = styled.div`
+  flex: 1 0 auto;
   max-width: 477px;
   height: 60px;
   position: relative;
@@ -24,7 +25,6 @@ export const inputInner = styled.div`
 `;
 
 export const UserInput = styled.input`
-  flex: 1 0 auto;
   width: 100%;
   height: 100%;
   border: none;
