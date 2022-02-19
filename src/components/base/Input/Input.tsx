@@ -11,7 +11,7 @@ interface InputProps {
 
 const Input = ({ setUserInput, currentInput, setCurrentInput }: InputProps) => {
   const debouncedSearch = useCallback(
-    debounce((value: string) => setUserInput(value), 300),
+    debounce((value: string) => setUserInput(value), 100),
     [setUserInput]
   );
 
