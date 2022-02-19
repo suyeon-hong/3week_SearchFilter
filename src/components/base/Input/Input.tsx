@@ -5,30 +5,31 @@ import { debounce } from 'lodash';
 
 interface InputProps {
   setUserInput: Dispatch<SetStateAction<string>>;
-  currentInput: string;
-  setCurrentInput: Dispatch<SetStateAction<string>>;
+  userInput: string;
+  setCurrentId: Dispatch<SetStateAction<string>>;
 }
 
-const Input = ({ setUserInput, currentInput, setCurrentInput }: InputProps) => {
+const Input = ({ setUserInput, userInput, setCurrentId }: InputProps) => {
   const debouncedSearch = useCallback(
     debounce((value: string) => setUserInput(value), 100),
     [setUserInput]
   );
 
   const handelChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCurrentInput(e.target.value);
+    setUserInput(e.target.value);
     debouncedSearch(e.target.value);
+    setCurrentId('');
   };
 
   const initInput = () => {
-    setCurrentInput('');
+    setUserInput('');
   };
 
   return (
     <S.InputContainer>
       <S.inputInner>
         <S.UserInput
-          value={currentInput}
+          value={userInput}
           placeholder="검색어를 입력해 주세요."
           onChange={handelChange}
         />

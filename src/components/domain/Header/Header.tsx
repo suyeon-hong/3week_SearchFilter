@@ -4,35 +4,38 @@ import { Dispatch, SetStateAction, useState } from 'react';
 
 interface HeaderPops {
   userSelect: boolean;
+  userInput: string;
   setUserInput: Dispatch<SetStateAction<string>>;
   setUserSelect: Dispatch<SetStateAction<boolean>>;
   initFilteredList: () => void;
+  setCurrentId: Dispatch<SetStateAction<string>>;
 }
 
 const Header = ({
   userSelect,
   setUserSelect,
+  userInput,
   setUserInput,
   initFilteredList,
+  setCurrentId,
 }: HeaderPops) => {
-  const [currentInput, setCurrentInput] = useState<string>('');
-
   return (
     <S.Header>
       <ItemBrandBtn
         userSelect={userSelect}
         setUserSelect={setUserSelect}
-        setCurrentInput={setCurrentInput}
+        setUserInput={setUserInput}
         initFilteredList={initFilteredList}
       />
       <Input
         setUserInput={setUserInput}
-        currentInput={currentInput}
-        setCurrentInput={setCurrentInput}
+        userInput={userInput}
+        setCurrentId={setCurrentId}
       />
       <ResetBtn
-        setCurrentInput={setCurrentInput}
+        setUserInput={setUserInput}
         initFilteredList={initFilteredList}
+        setCurrentId={setCurrentId}
       />
     </S.Header>
   );

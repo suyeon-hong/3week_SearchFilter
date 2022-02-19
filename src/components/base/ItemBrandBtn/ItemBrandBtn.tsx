@@ -4,19 +4,19 @@ import * as S from './Style';
 interface ItemBrandBtnProps {
   userSelect: boolean;
   setUserSelect: Dispatch<boolean>;
-  setCurrentInput: Dispatch<SetStateAction<string>>;
+  setUserInput: Dispatch<SetStateAction<string>>;
   initFilteredList: () => void;
 }
 
 const ItemBrandBtn = ({
   userSelect,
   setUserSelect,
-  setCurrentInput,
+  setUserInput,
   initFilteredList,
 }: ItemBrandBtnProps) => {
   const handleUserSelect = (): void => {
     setUserSelect(!userSelect);
-    setCurrentInput('');
+    setUserInput('');
     initFilteredList();
   };
 
