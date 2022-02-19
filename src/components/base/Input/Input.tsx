@@ -17,14 +17,6 @@ interface InputProps {
 const Input = ({ setUserInput }: InputProps) => {
   const [currentInput, setCurrentInput] = useState<string>('');
 
-  const getUserInput = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (currentInput.trim() === '') return;
-    setUserInput(currentInput);
-    setCurrentInput('');
-  };
-
   const debouncedSearch = useCallback(
     debounce((value: string) => setUserInput(value), 300),
     [setUserInput]
@@ -35,19 +27,23 @@ const Input = ({ setUserInput }: InputProps) => {
     debouncedSearch(e.target.value);
   };
 
+  const initInput = () => {
+    setCurrentInput('');
+  };
+
   return (
-    <S.Form onSubmit={getUserInput}>
-      <S.InputWrapper>
+    <S.InputContainer>
+      <S.inputInner>
         <S.UserInput
           value={currentInput}
           placeholder="제품명, 브랜드명 검색"
           onChange={handelChange}
         />
-        <S.SearchBtn type="submit">
+        <S.SearchBtn type="submit" onClick={initInput}>
           <RiSearchLine />
         </S.SearchBtn>
-      </S.InputWrapper>
-    </S.Form>
+      </S.inputInner>
+    </S.InputContainer>
   );
 };
 

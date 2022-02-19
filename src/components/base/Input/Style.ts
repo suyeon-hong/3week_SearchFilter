@@ -3,11 +3,11 @@ import { font14, font18 } from '@styles/fonts';
 import styled from 'styled-components';
 import { removeTextPointer } from '@styles/commonStyles';
 
-export const Form = styled.form`
+export const InputContainer = styled.div`
   ${removeTextPointer};
 `;
 
-export const InputWrapper = styled.div`
+export const inputInner = styled.div`
   margin: 0 auto;
   max-width: 477px;
   height: 60px;
