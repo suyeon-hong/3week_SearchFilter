@@ -1,23 +1,16 @@
 import { IMockData } from '@types';
 
-export const matchName = (
-  name: string | null | undefined,
-  keyword: string
-): boolean => {
-  const keyLen = keyword.length;
-  name = name?.toLowerCase().substring(0, keyLen);
+export const matchName = (name: string, keyword: string): boolean => {
   if (keyword === '') return false;
-  return name === keyword.toString().toLowerCase();
+  return name.toLowerCase().indexOf(keyword) > -1;
 };
 
 export const matchBrand = (
   brand: string | null | undefined,
   keyword: string
-): boolean => {
-  const keyLen = keyword.length;
-  brand = brand?.toLowerCase().substring(0, keyLen);
-  if (brand === '') return false;
-  return brand === keyword.toString().toLowerCase();
+): boolean | undefined => {
+  if (keyword === '') return false;
+  return (brand?.toLowerCase().indexOf(keyword) as number) > -1;
 };
 
 export const resultFilter = (

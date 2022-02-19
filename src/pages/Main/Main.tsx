@@ -64,11 +64,14 @@ const Main = ({ data }: MainProps) => {
     <S.PageWrapper>
       <S.InputWrapper>
         <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
-        <Input setUserInput={setUserInput} initFilteredList={initFilteredList}/>
-        <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
+        <Input
+          setUserInput={setUserInput}
+          initFilteredList={initFilteredList}
+        />
       </S.InputWrapper>
-          <MainBox items={filteredList} />
-          <PaginationWrapper list={filteredList} />
+      <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
+      <MainBox items={filteredList} />
+      <PaginationWrapper list={filteredList} />
     </S.PageWrapper>
   );
 };
