@@ -103,4 +103,33 @@ $ yarn start
 ## 📈 디렉토리 구조
 
 ```
+├── README.md
+├── build
+│   ├── asset-manifest.json
+│   ├── index.html
+│   ├── robots.txt
+│   └── static
+├── config-overrides.js
+├── package.json
+├── public
+│   ├── index.html
+│   └── robots.txt
+├── server
+│   ├── db.json
+│   └── index.js
+├── src
+│   ├── App.tsx
+│   ├── assets
+│   ├── components
+│   ├── hooks
+│   ├── index.tsx
+│   ├── models
+│   ├── pages
+│   ├── react-app-env.d.ts
+│   ├── setupTests.ts
+│   ├── styles
+│   └── utils
+├── tsconfig.json
+├── tsconfig.paths.json
+└── yarn.lock
 ```
