@@ -15,3 +15,21 @@ export const PageWrapper = styled.div`
     gap: ${({ theme }) => `${theme.gaps.base}px`};
   }
 `;
+
+export const InputWrapper = styled.div`
+  ${flexbox({ jc: 'around' })};
+
+  & .blank {
+    width: 25%;
+    visibility: hidden;
+  }
+  & form {
+    width: 50%;
+  }
+  & .buttonWrapper {
+    width: 25%;
+    & input {
+      visibility: hidden;
+    }
+  }
+`;
