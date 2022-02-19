@@ -4,13 +4,19 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface ResetBtnProps {
   initFilteredList: () => void;
-  setCurrentInput: Dispatch<SetStateAction<string>>;
+  setUserInput: Dispatch<SetStateAction<string>>;
+  setCurrentId: Dispatch<SetStateAction<string>>;
 }
 
-const ResetBtn = ({ setCurrentInput, initFilteredList }: ResetBtnProps) => {
+const ResetBtn = ({
+  setUserInput,
+  initFilteredList,
+  setCurrentId,
+}: ResetBtnProps) => {
   const reset = () => {
     initFilteredList();
-    setCurrentInput('');
+    setUserInput('');
+    setCurrentId('');
   };
 
   return (

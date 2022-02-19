@@ -4,11 +4,18 @@ import * as S from './Style';
 interface TagProps {
   item: string;
   currentId: string;
+  setUserInput: Dispatch<SetStateAction<string>>;
   setCurrentId: Dispatch<SetStateAction<string>>;
   setCheckedBrand: Dispatch<SetStateAction<string>>;
 }
 
-const Tag = ({ item, currentId, setCurrentId, setCheckedBrand }: TagProps) => {
+const Tag = ({
+  item,
+  currentId,
+  setUserInput,
+  setCurrentId,
+  setCheckedBrand,
+}: TagProps) => {
   const changeHnadler = (e: ChangeEvent<HTMLInputElement>) => {
     const id = (e.target as Element).id;
 
@@ -26,6 +33,7 @@ const Tag = ({ item, currentId, setCurrentId, setCheckedBrand }: TagProps) => {
       setCurrentId(id);
       setCheckedBrand(id);
     }
+    setUserInput('');
   };
 
   return (

@@ -20,6 +20,7 @@ const Main = ({ data }: MainProps) => {
   const [temporaryBrand, setTemporaryBrand] = useState('');
   const [filteredList, setFilteredList] = useState<IMockData[]>([]);
   const [temporaryList, setTemporaryList] = useState<IMockData[]>([]);
+  const [currentId, setCurrentId] = useState<string>('');
 
   const initFilteredList = () => {
     setFilteredList(data);
@@ -31,7 +32,7 @@ const Main = ({ data }: MainProps) => {
 
   useEffect(() => {
     if (!userInput) {
-      setFilteredList(data);
+      initFilteredList();
       return;
     }
 
@@ -43,7 +44,7 @@ const Main = ({ data }: MainProps) => {
 
   useEffect(() => {
     if (!checkedBrand) {
-      setFilteredList(data);
+      initFilteredList();
       return;
     }
 
@@ -73,11 +74,19 @@ const Main = ({ data }: MainProps) => {
     <S.PageWrapper>
       <Header
         userSelect={userSelect}
+        userInput={userInput}
         setUserInput={setUserInput}
         setUserSelect={setUserSelect}
         initFilteredList={initFilteredList}
+        setCurrentId={setCurrentId}
       />
-      <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
+      <TagList
+        setUserInput={setUserInput}
+        supplementInfo={data}
+        setCheckedBrand={setCheckedBrand}
+        currentId={currentId}
+        setCurrentId={setCurrentId}
+      />
       <MainBox items={filteredList} />
       <PaginationWrapper list={filteredList} />
     </S.PageWrapper>

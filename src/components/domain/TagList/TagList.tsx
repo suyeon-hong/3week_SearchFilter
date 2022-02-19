@@ -5,11 +5,19 @@ import { IMockData } from '@types';
 
 interface TagListProps {
   supplementInfo?: IMockData[];
+  setUserInput: Dispatch<SetStateAction<string>>;
   setCheckedBrand: Dispatch<SetStateAction<string>>;
+  currentId: string;
+  setCurrentId: Dispatch<SetStateAction<string>>;
 }
 
-const TagList = ({ supplementInfo, setCheckedBrand }: TagListProps) => {
-  const [currentId, setCurrentId] = useState<string>('');
+const TagList = ({
+  supplementInfo,
+  setUserInput,
+  setCheckedBrand,
+  currentId,
+  setCurrentId,
+}: TagListProps) => {
   const tagList: string[] = [];
 
   if (supplementInfo) {
@@ -30,6 +38,7 @@ const TagList = ({ supplementInfo, setCheckedBrand }: TagListProps) => {
             <Tag
               item={item}
               currentId={currentId}
+              setUserInput={setUserInput}
               setCurrentId={setCurrentId}
               setCheckedBrand={setCheckedBrand}
             />
