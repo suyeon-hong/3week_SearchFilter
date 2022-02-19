@@ -86,7 +86,9 @@ $ yarn start
 
 #### ✔ 고병표
 
-- 
+- `Header`, `ItemBox` 구현
+- `MainBox`, `ItemBrandBtn` 구현
+- `검색 기능` 및 `Filter` 로직 구현
 
 #### ✔ 홍수연
 
