@@ -105,6 +105,7 @@ $ yarn start
 ```
 ├── README.md
 ├── build
+│   ├── mock
 │   ├── asset-manifest.json
 │   ├── index.html
 │   ├── robots.txt
