@@ -9,7 +9,7 @@ export const MainBoxWrapper = styled.section`
   box-sizing: border-box;
   filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.1));
   border-radius: 5px;
-  max-height: 80vh;
+  height: 80vh;
   overflow-y: auto;
   ${hideScrollbar};
 

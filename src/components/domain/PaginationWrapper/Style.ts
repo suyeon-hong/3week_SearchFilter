@@ -7,6 +7,7 @@ export const PaginationWrapper = styled.div`
 `;
 
 export const MainBoxWrapper = styled.section`
+  min-height: 570px;
   padding: ${({ theme }) => `${theme.gaps.lgVertical}px`} 13px 0 13px;
   border: 1px solid #eeeeee;
   box-sizing: border-box;
