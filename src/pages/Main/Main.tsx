@@ -17,8 +17,12 @@ const Main = ({ data }: MainProps) => {
   const [filteredList, setFilteredList] = useState<IMockData[]>([]);
   const [temporaryList, setTemporaryList] = useState<IMockData[]>([]);
 
-  useEffect(() => {
+  const initFilteredList = () => {
     setFilteredList(data);
+  };
+
+  useEffect(() => {
+    initFilteredList();
   }, [data]);
 
   useEffect(() => {
@@ -55,11 +59,10 @@ const Main = ({ data }: MainProps) => {
     <S.PageWrapper>
       <S.InputWrapper>
         <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
-        <Input setUserInput={setUserInput} />
-        <div className="blank">리셋버튼 추가할 자리</div>
+        <Input setUserInput={setUserInput} initFilteredList={initFilteredList}/>
+        <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
       </S.InputWrapper>
-      <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
-
+      
       {filteredList.length > 0 ? (
         <>
           <MainBox items={filteredList} />
