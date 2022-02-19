@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import * as S from './Style';
 import { Tag } from '@components/base';
 import { IMockData } from '@types';
@@ -9,6 +9,7 @@ interface TagListProps {
 }
 
 const TagList = ({ supplementInfo, setCheckedBrand }: TagListProps) => {
+  const [currentId, setCurrentId] = useState<string>('');
   const tagList: string[] = [];
 
   if (supplementInfo) {
@@ -26,7 +27,12 @@ const TagList = ({ supplementInfo, setCheckedBrand }: TagListProps) => {
       {tagList.length > 0 &&
         React.Children.toArray(
           tagList.map((item) => (
-            <Tag item={item} setCheckedBrand={setCheckedBrand} />
+            <Tag
+              item={item}
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              setCheckedBrand={setCheckedBrand}
+            />
           ))
         )}
     </S.TagList>

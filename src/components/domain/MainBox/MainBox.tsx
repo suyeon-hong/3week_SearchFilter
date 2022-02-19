@@ -11,7 +11,7 @@ const MainBox = ({ items }: MainBoxProps) => {
   return (
     <S.MainBoxWrapper>
       <Header />
-      {items ? (
+      {items?.length ? (
         React.Children.toArray(
           items.map((item) => (
             <ItemBox brandName={item.브랜드} itemName={item.제품명} />

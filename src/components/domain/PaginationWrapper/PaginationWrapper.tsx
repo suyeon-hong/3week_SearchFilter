@@ -22,7 +22,7 @@ const PaginationWrapper = ({ list }: PaginationWrapperProps) => {
     <S.PaginationWrapper>
       <S.MainBoxWrapper>
         <Header />
-        {list ? (
+        {list?.length ? (
           React.Children.toArray(
             list
               .slice(offset, offset + POST_PER_PAGE)
