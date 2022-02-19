@@ -5,7 +5,7 @@
 ## 🚀 정보
 
 - [배포주소 바로가기](https://wanted-team2.netlify.app/)
-- [노션 바로가기](https://sleepy-oxygen-343.notion.site/41970b5fee2d45aebd7b01de061039eb)
+- [노션 바로가기](https://sleepy-oxygen-343.notion.site/3-37f615ee8bef4160ba99cb55323f5cd1)
 - [피그마 바로가기](https://www.figma.com/file/REkIeMk5Za8aGg5YSNqBMc/%EC%97%90%EB%84%88%EC%A7%80-%EB%B0%B8%EB%9F%B0%EC%8A%A4?node-id=0%3A1)
 
 <br>
