@@ -1,4 +1,4 @@
-import { EmptyBox, Input } from '@components/base';
+import { EmptyBox, Input, ItemBrandBtn } from '@components/base';
 import { PaginationWrapper, TagList, MainBox } from '@components/domain';
 import { resultFilter } from '@utils/functions';
 import { IMockData } from '@types';
@@ -11,6 +11,7 @@ interface MainProps {
 
 const Main = ({ data }: MainProps) => {
   const [userInput, setUserInput] = useState('');
+  const [userSelect, setUserSelect] = useState<boolean>(true);
   const [checkedBrand, setCheckedBrand] = useState('');
   const [temporaryBrand, setTemporaryBrand] = useState('');
   const [filteredList, setFilteredList] = useState<IMockData[]>([]);
@@ -21,7 +22,9 @@ const Main = ({ data }: MainProps) => {
   }, [data]);
 
   useEffect(() => {
-    const results: IMockData[] = resultFilter(data, '제품명', userInput);
+    const results: IMockData[] = userSelect
+      ? resultFilter(data, '제품명', userInput)
+      : resultFilter(data, '브랜드', userInput);
     results && setFilteredList(results);
   }, [userInput]);
 
@@ -50,7 +53,11 @@ const Main = ({ data }: MainProps) => {
 
   return (
     <S.PageWrapper>
-      <Input setUserInput={setUserInput} />
+      <S.InputWrapper>
+        <ItemBrandBtn userSelect={userSelect} setUserSelect={setUserSelect} />
+        <Input setUserInput={setUserInput} />
+        <div className="blank">리셋버튼 추가할 자리</div>
+      </S.InputWrapper>
       <TagList supplementInfo={data} setCheckedBrand={setCheckedBrand} />
 
       {filteredList.length > 0 ? (
