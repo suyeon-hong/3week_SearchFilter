@@ -30,6 +30,11 @@ const Main = ({ data }: MainProps) => {
   }, [data]);
 
   useEffect(() => {
+    if (!userInput) {
+      setFilteredList(data);
+      return;
+    }
+
     const results: IMockData[] = userSelect
       ? resultFilter(data, '제품명', userInput)
       : resultFilter(data, '브랜드', userInput);
