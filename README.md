@@ -32,14 +32,6 @@ $ yarn start
 
 <br>
 
-## 😎 팀원
-
-| [김지영(팀장)](https://github.com/Jeong-jeong)| [고병표](https://github.com/kokoball)| [유제호](https://github.com/ludacirs)| [홍수연](https://github.com/suyeon-hong)|
-| --- | --- | -- | -- |
-| <img src="https://user-images.githubusercontent.com/68528752/153546074-abd9a7df-771c-4f14-8a2f-a77246210b1c.jpeg" width="400px"/> | <img src="https://user-images.githubusercontent.com/68528752/153546140-b58f43fe-4730-46ca-bfda-0b048f36d24f.JPG" width="400px"/> | <img src="https://user-images.githubusercontent.com/68528752/153545718-c688e091-53a3-4e30-97fd-a2f00ab97aa8.JPG" width="400px"> | <img src="https://user-images.githubusercontent.com/68528752/153545721-ecc413f4-9d1b-45e0-9909-423c27128b1c.jpeg" width="400px"> |
-
-<br>
-
 ## 🔥 프로젝트 과정 소개
 
 | [정보 공유](https://www.notion.so/5520df8322e549ebb29b4528de020d52)| [반복 최소화](./styles/font.ts)|
@@ -81,8 +73,6 @@ $ yarn start
 #### ✔ 김지영
 
 - `Pagination` 컴포넌트 구현
-  - 페이지 가장끝과 앞으로 이동하는 기능 구현
-  - 필요한 데이터만 slice로 잘라서 보여주는 기능 구현
 
 #### ✔ 고병표
 
@@ -92,7 +82,13 @@ $ yarn start
 
 #### ✔ 홍수연
 
-- `TagList`, `Input`, `ResetBtn` 컴포넌트 구현
+- `TagList`, `Tag` 컴포넌트 구현
+  - 토글기능 구현
+-  `Input` 컴포넌트 구현
+    - 실시간 입력값 조회
+   - debounce 적용
+-  `ResetBtn` 컴포넌트 구현
+   - 버튼 클릭 시 검색창, 데이터리스트 초기화
 - `Main` 컴포넌트에 domain 컴포넌트 병합 및 UI 수정
 
 
