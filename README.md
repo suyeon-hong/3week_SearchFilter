@@ -1,12 +1,6 @@
 # 목표는 취업이조 2팀
-
-<br>
-
-## 🚀 정보
-
-- [배포주소 바로가기](https://wanted-team2.netlify.app/)
-- [노션 바로가기](https://sleepy-oxygen-343.notion.site/3-37f615ee8bef4160ba99cb55323f5cd1)
-- [피그마 바로가기](https://www.figma.com/file/REkIeMk5Za8aGg5YSNqBMc/%EC%97%90%EB%84%88%EC%A7%80-%EB%B0%B8%EB%9F%B0%EC%8A%A4?node-id=0%3A1)
+👉 [배포주소 바로가기](https://wanted-team2.netlify.app/)<br>
+👉 [회고록 바로가기](https://velog.io/@suyeon-hong/3%EC%A3%BC%EC%B0%A8-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9%EC%BD%94%EC%8A%A4-%ED%9A%8C%EA%B3%A0-2)
 
 <br>
 
