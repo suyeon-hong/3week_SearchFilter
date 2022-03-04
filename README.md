@@ -1,4 +1,4 @@
-# 영양제 검색 페이지
+# 사용자의 효율적인 검색을 돕기위한 영양제 검색 사이트
 👉 [배포주소 바로가기](https://wanted-team2.netlify.app/)<br>
 👉 [회고록 바로가기](https://velog.io/@suyeon-hong/3%EC%A3%BC%EC%B0%A8-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9%EC%BD%94%EC%8A%A4-%ED%9A%8C%EA%B3%A0-2)
 
